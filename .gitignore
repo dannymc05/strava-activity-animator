@@ -1,0 +1,11 @@
+# Keep personal activity exports out of Git.
+*.tcx
+*.gpx
+*.fit
+*.gz
+*.zip
+*.csv
+activities/
+exports/
+.DS_Store
+Thumbs.db
