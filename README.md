@@ -22,7 +22,7 @@ Activity files are processed in memory in the browser and are never uploaded by 
 - Imports: 300 MB compressed/input total per batch, 100 MB per expanded ZIP entry, 500 MB expanded per batch, 20,000 route files. Use smaller batches for large exports.
 - Dates and time-of-day playback use UTC. Activities continuing across midnight may extend beyond the time-of-day window. Missing timestamps use point order for animation and do not count towards recorded time.
 - Distance is calculated from GPS points; totals may differ from Strava's corrected/moving-time statistics.
-- The first 1,000 activity rows are listed; all filtered routes are drawn. Large collections may render slowly.
+- The first 100 activity rows are listed; use search and filters to find others. All filtered routes remain on the map. Automatic rendering uses cached full-route backgrounds and moving positions above 250 activities, capped at 30 fps. Choose Animated trails for progressive trail drawing, or Fast to force the lighter view. Display geometry is reduced to a screen-space point budget; original GPS points and statistics are retained. Route bounds and playback extents are cached.
 - ZIP extraction uses bundled JSZip 3.10.1, licensed under MIT; see `JSZip-LICENSE.txt` and the embedded license notice. No CDN is needed.
 - Optional maps depend on the provider's availability and terms. This is independent software, not affiliated with Strava.
 
@@ -32,4 +32,4 @@ In Settings → Pages, deploy from branch `main`, folder `/ (root)`. The entry p
 
 ## Validation
 
-Synthetic checks covered TCX, GPX, GPX.GZ, ZIP/CSV metadata, FIT and checksum rejection, duplicate imports, zero coordinates, date filters, demo generation, all four animation calculations, escaped names and offline rendering. Full browser visual QA was unavailable in the authoring environment. Real user export compatibility has not yet been validated.
+Synthetic checks covered TCX, GPX, GPX.GZ, ZIP/CSV metadata, FIT and checksum rejection, duplicate imports, zero coordinates, date filters, demo generation, all four animation calculations, escaped names and offline rendering. Live browser smoke checks verified demo rendering, playback, filters, zoom and shared starts. A synthetic performance regression check covered 1,000 activities / 1,000,000 GPS points with cache invalidation and all routes retained; its timing measurements exclude real browser painting. Real user export compatibility has not yet been validated.
