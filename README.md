@@ -49,3 +49,7 @@ Synthetic checks covered TCX, GPX, GPX.GZ, ZIP/CSV metadata, FIT and checksum re
 ### v1.8 validation
 
 Live browser checks used synthetic demo routes and a ZIP containing a GPX.GZ route, a route without GPS, an invalid FIT and an ignored text file. Verified preview counts, cancellation without collection changes, confirmation, duplicate detection, original GZ/ZIP filenames, TXT failure download, map picking and detail highlighting, hide/show, selected comparison, undo, local save/reopen across reloads, persisted hidden/colour settings, JSON backup restore, full video recording and manual stop with downloaded WebM files. No real activity exports were used. JavaScript syntax and Git whitespace checks passed.
+
+### v1.8.1 import fix
+
+Collection tools are bundled directly into `index.html` again. The app works when only that file is copied or downloaded; no companion JavaScript file is needed. This prevents `showImportPreview is not defined` when the companion file is missing or fails to load.
